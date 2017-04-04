@@ -1,0 +1,115 @@
+/*整体格式*/
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    margin:0; word-wrap:break-word;  word-break:break-all; height:100%; width:100%;
+}
+
+
+/*主要内容*/
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.calendar{
+    margin: 0 auto;
+    width: 820px;
+    height: 440px;
+    border:15px solid #ccc;
+    box-sizing: border-box;
+    border-image:url(http://img.mukewang.com/52e22a1c0001406e03040221.jpg) 20 repeat;
+}
+
+/*calendar头部*/
+.calTit{
+    background-image: url(../img/calTit.jpg);
+}
+.topDateFont{font-size:14px; color:#000000;}
+.calTit FONT{margin-top:2px;}
+.calTit SPAN{margin-top:2px; font-weight:bold;}
+
+.ArrowLL{
+    background-image: url(../img/tool-sprites.gif);
+    background-position: 0px 180px;
+}
+.ArrowL{
+    background-image: url(../img/tool-sprites.gif);
+    background-position: 0 255px;
+}
+.ArrowRR{
+    background-image: url(../img/tool-sprites.gif);
+    background-position: 0px 195px;
+}
+.ArrowR{
+    background-image: url(../img/tool-sprites.gif);
+    background-position: 0px 240px;
+}
+.Btn{
+    height: 15px;
+    width: 15px;
+    float: left;
+    margin-top: 2px;
+    margin-left: 3px;
+    margin-right: 3px;
+    overflow: hidden;
+}
+
+.calWeek{
+    background-color: #99BBE8;
+    color: #15428B;
+}
+ .red{
+     color: #FF0000;
+}
+ .today{
+     background: #99BBE8;
+ }
+.nationalHoliday{
+    background-color: #d7d7d7;
+    color: black;
+    font-weight: bold;
+}
+
+
+/*下拉选项，选择某年某月*/
+#dateDown{
+    border: 1px solid #f8c173;
+    background: #fefef1;
+    position: absolute;
+    top: 25px;
+    z-index: 20;
+    width: 209px;
+}
+.month{
+    cursor: pointer;
+}
+/*.yearDown{
+    cursor: pointer;
+}*/
+.choseToMonth{
+    color:red;
+}
+.choseToYear{
+    color: red;
+}
+.unChoseYear{
+    color: green;
+}
+
+
+/*table.biao {
+    border-collapse: collapse;
+    font-family: "Times New Roman", "宋体";
+}*/
+
+
+/*
+底部设置*/
+.holiday{
+    background: yellow;
+}

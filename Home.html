@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar main Content</title>
+    <link href="CSS/allContent.css" rel="stylesheet" type="text/css">
+    <link href="CSS/tagCss.css" rel="stylesheet" type="text/css">
+    <script src="JS/jquery.js" type="text/javascript"></script>
+    <script src="JS/calendar.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div class="main">
+    <div class="calendar">
+        <table class="calendarMain">
+            <tbody>
+            <tr>
+                <td colspan="7" style="height:30px;padding-top:3px;text-align:center;position: relative;" class="calTit">
+                    <a href="#" title="上一年" id="nianjian" class="Btn ArrowLL"></a>
+                    <a href="#" title="上一月" id="yuejian" class="Btn ArrowL"></a>
+                    <div style="width:250px; float:left; padding-left:230px;"><span id="dateSelectionRili" class="dateSelectionRili" style="cursor:hand;color: white; border-bottom: 1px solid white;" onclick="dateContentAll.show()"> <span id="nian" class="topDateFont"></span><span class="topDateFont">年</span><span id="yue" class="topDateFont"></span><span class="topDateFont">月</span> <span style="color: #15428B;" class="dateSelectionBtn cal_next" onclick="dateContentAll.show()">▼</span></span> &nbsp;&nbsp;<font id=GZ class="topDateFont"></font></div>
+
+                    <div style="left: 240px; display: none;" id="dateDown" >
+                        <div class="header">
+                            <div id="yearPrev" style="display: inline-block;" onclick="dateContentAll.houtui()"><a href="#">&lt;</a></div>
+                            <!--<div id="headContent" style="display: inline-block;"></div>-->
+                            <div style="display: inline-block;margin-right: -10px;">
+                                <script language="JavaScript">
+                                    for(var i=0;i<5;i++){
+                                        document.write('<span class="unChoseYear" id="headContent'+i+'" style="white-space:nowrap;overflow:hidden;cursor:pointer;" onclick="dateContentAll.getYear(this)">');
+                                        document.write('</span>&nbsp;');
+                                    }
+                                </script>
+                            </div>
+                            <div id="yearNext" style="display: inline-block;" onclick="dateContentAll.qianjin()"><a href="#">&gt;</a></div>
+                        </div>
+                        <div class="body">
+                            <div id="monthList">
+                                <span id="SM1" class="month" onclick="dateContentAll.setMonth(1)">1</span>&nbsp;&nbsp;
+                                <span id="SM2" class="month" onclick="dateContentAll.setMonth(2)">2</span>&nbsp;&nbsp;
+                                <span id="SM3" class="month" onclick="dateContentAll.setMonth(3)">3</span>&nbsp;&nbsp;
+                                <span id="SM4" class="month" onclick="dateContentAll.setMonth(4)">4</span>&nbsp;&nbsp;
+                                <span id="SM5" class="month" onclick="dateContentAll.setMonth(5)">5</span>&nbsp;&nbsp;
+                                <span id="SM6" class="month" onclick="dateContentAll.setMonth(6)">6</span><br>
+                                <span id="SM7" class="month" onclick="dateContentAll.setMonth(7)">7</span>&nbsp;&nbsp;
+                                <span id="SM8" class="month" onclick="dateContentAll.setMonth(8)">8</span>&nbsp;&nbsp;
+                                <span id="SM9" class="month" onclick="dateContentAll.setMonth(9)">9</span>&nbsp;&nbsp;
+                                <span id="SM10" class="month" onclick="dateContentAll.setMonth(10)">10</span>&nbsp;&nbsp;
+                                <span id="SM11" class="month" onclick="dateContentAll.setMonth(11)">11</span>&nbsp;
+                                <span id="SM12" class="month curr" onclick="dateContentAll.setMonth(12)">12</span>
+                            </div>
+                        </div>
+                        <div class="button" style="margin: 5px 0 5px 10px;">
+                            <div class="today" style="display: inline-block;background-color: deepskyblue;color: white;border-radius: 2px 2px;" onclick="dateContentAll.backToToday()"><a href="#">今天</a></div>&nbsp;&nbsp;&nbsp;
+                            <div class="config" style="display: inline-block;background-color: deepskyblue;color: white;border-radius: 2px 2px;" onclick="dateContentAll.config()"><a href="#">确定</a></div>&nbsp;&nbsp;&nbsp;
+                            <div class="back" style="display: inline-block;background-color: deepskyblue;color: white;border-radius: 2px 2px;" onclick="dateContentAll.cancel()"><a href="#">取消</a></div>&nbsp;
+                        </div>
+                    </div>
+
+                    <a href="#" id="nianjia" title="下一年" class="Btn ArrowRR" style="float:right;"></a>
+                    <a href="#" id="yuejia" title="下一月" class="Btn ArrowR" style="float:right;"></a>
+
+                </td>
+            </tr>
+            <tr class="calWeek" style="font-size:12px; height:20px;text-align:center;">
+                <td width="100" class="red">星期日</td>
+                <td width="100">星期一</td>
+                <td width="100">星期二</td>
+                <td width="100">星期三</td>
+                <td width="100">星期四</td>
+                <td width="100">星期五</td>
+                <td width="100" class="red">星期六</td>
+            </tr>
+            <script language="JavaScript">
+                var tmp;
+                for(var i=0;i<6;i++){
+                    document.write('<tr align="center" height="50">');
+                    for(var j=0;j<7;j++){
+                        var calID=i*7+j;
+                       if(j==0||j==6){
+                           document.write('<td class="red" id="Kobe'+calID+'"><font id="calID'+calID+'" style="font-size: 22px;font-family: Arial" class="red">');
+                        }
+                        else{
+                            document.write('<td id="Kobe'+calID+'"> <font id="calID'+calID+'" style="font-size: 22px;font-family: Arial;">');
+                        }
+                        document.write('</font><br><font id="secondCalID'+calID+'" style="font-size:20px;white-space:nowrap;overflow:hidden;cursor:default;"></font></td>');
+                    }
+                    document.write('</tr>');
+                }
+            </script>
+            <tr class="nationalHoliday" style="font-size:12px; height:20px;text-align:center;">
+                <td width="100" ><span onclick="dateContentAll.holiday(1)" style="cursor: pointer;">元旦节</span></td>
+                <td width="100" ><span onclick="dateContentAll.holiday(2)" style="cursor: pointer;">情人节</span></td>
+                <td width="100" ><span onclick="dateContentAll.holiday(3)" style="cursor: pointer;">妇女节</span></td>
+                <td width="100" ><span onclick="dateContentAll.holiday(5)" style="cursor: pointer;">五一节</span></td>
+                <td width="100" ><span onclick="dateContentAll.holiday(8)" style="cursor: pointer;">建军节</span></td>
+                <td width="100" ><span onclick="dateContentAll.holiday(9)" style="cursor: pointer;">教师节</span></td>
+                <td width="100" ><span onclick="dateContentAll.holiday(10)" style="cursor: pointer;">国庆节</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
